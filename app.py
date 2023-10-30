@@ -130,4 +130,4 @@ def is_username_taken(username):
 if __name__ == '__main__':
     while(True):
         load_users()
-        app.run()
+        app.run(port=1000)

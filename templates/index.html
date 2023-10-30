@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#top-bar {
+  background-color: #4c1366; /* Более темный фиолетовый цвет */
+  color: white; /* Белый цвет текста */
+  font-size: 18px; /* Увеличение размера текста */
+  padding: 10px;
+}
+
+#top-bar a {
+  color: white; /* Белый цвет ссылок */
+  margin-right: 10px; /* Отступ между ссылками */
+}
+
+#top-bar a:last-child {
+  margin-right: 0; /* Убираем отступ для последней ссылки */
+}
+
+.right-section {
+  float: right; /* Перемещаем элементы справа */
+}
+#user-list {
+  float: right; /* Размещаем user-list справа */
+  width: 200px; /* Задаем ширину user-list */
+  padding: 10px;
+  background-color: #eaf6fa; /* Голубой цвет фона */
+  border: 1px solid #4c1366; /* Граница вокруг user-list */
+  margin-top: 2px; /* Отступ юзеров сверху */
+}
+</style>
+</head>
+<body>
+<div id="top-bar">
+  <a href="/">Main</a>
+
+  <div class="right-section">
+    {% if logged_in %}
+      <a href="/account">Go to your account</a>
+      <a href="/logout">Logout</a>
+    {% else %}
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+    {% endif %}
+  </div>
+</div>
+
+<div id="user-list">
+  <ul class="user-list">
+  <a>User list:</a>
+    {% for user in users %}
+      <li><a href="{{ url_for('profile', username=user.username) }}">{{ user.username }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+</body>
+</html>
